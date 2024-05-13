@@ -3,17 +3,17 @@ import csv
 BASE_LOCATION = 'data/'
 
 class DataSaver:
-    fileName: str
+    filename: str
 
-    def setFileName(self, fileName: str):
-        self.fileName = fileName
+    def set_file_name(self, filename: str):
+        self.filename = filename
 
-    def createHeader(self, headerParams: list) -> None:
-        with open(BASE_LOCATION + self.fileName, 'w', newline='') as csvFile:
-            writer = csv.DictWriter(csvFile, fieldnames=headerParams)
+    def create_header(self, header_params: list) -> None:
+        with open(BASE_LOCATION + self.filename, 'w', newline='') as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=header_params)
             writer.writeheader()
 
-    def saveToCsv(self, dataToSave: dict, saveType: str) -> None:
-        with open(BASE_LOCATION + self.fileName, saveType, newline='', encoding='utf-8') as csvFile:
-            writer = csv.DictWriter(csvFile, fieldnames=dataToSave.keys())
-            writer.writerow(dataToSave)
+    def save_to_csv(self, data_to_save: dict, save_type: str) -> None:
+        with open(BASE_LOCATION + self.filename, save_type, newline='', encoding='utf-8') as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=data_to_save.keys())
+            writer.writerow(data_to_save)

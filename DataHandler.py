@@ -6,40 +6,40 @@ PARAMS = ['@objectid', 'name', 'yearpublished', 'boardgamecategory', 'minplayers
 BASE_URL = 'https://api.geekdo.com/xmlapi/boardgame/'
 
 class DataHandler:
-    def extractData(self, offset: int = 0, limit: int = 0) -> None:
-        dataImporter = DataImporter()
+    def extract_data(self, offset: int = 0, limit: int = 0) -> None:
+        data_importer = DataImporter()
 
-        dataSaver = DataSaver()
-        dataSaver.setFileName('secondBoardGameDataSet.csv')
+        data_saver = DataSaver()
+        data_saver.set_file_name('secondBoardGameDataSet.csv')
 
         if not offset:
-            dataSaver.createHeader(PARAMS)
+            data_saver.create_header(PARAMS)
 
-        importCount = offset
-        dataCount = 0
-        isThereMoreData = True
+        import_count = offset
+        data_count = 0
+        is_there_more_data = True
 
-        timeStart = time.time()
+        time_start = time.time()
 
-        while (isThereMoreData and limit == 0) or (limit != 0 and importCount < limit):
-            dataImporter.setImportDestination(BASE_URL + str(importCount + 1))
-            data = dataImporter.importWithParams(PARAMS)
+        while (is_there_more_data and limit == 0) or (limit != 0 and import_count < limit):
+            data_importer.set_import_destination(BASE_URL + str(import_count + 1))
+            data = data_importer.import_with_params(PARAMS)
 
             if isinstance(data, ImportError):
-                isThereMoreData = False
+                is_there_more_data = False
                 continue
 
-            importCount += 1
+            import_count += 1
 
             if not data:
                 continue
 
-            dataSaver.saveToCsv(data, 'a')
-            dataCount += 1
+            data_saver.save_to_csv(data, 'a')
+            data_count += 1
 
-            print(f'Saving {importCount} boardgame')
+            print(f'Saving {import_count} boardgame')
 
         timeEnd = time.time()
-        timeElapsed = timeEnd - timeStart
+        timeElapsed = timeEnd - time_start
 
-        print(f'Data Extraction complete, took {timeElapsed}s , extracted {importCount} board games')
+        print(f'Data Extraction complete, took {timeElapsed}s , extracted {import_count} board games')

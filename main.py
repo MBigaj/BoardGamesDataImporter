@@ -1,8 +1,8 @@
 from DataHandler import DataHandler
 
 def main():
-    dataHandler = DataHandler()
-    dataHandler.extractData(94324)
+    data_handler = DataHandler()
+    data_handler.extract_data(114986)
 
 
 if __name__ == "__main__":
