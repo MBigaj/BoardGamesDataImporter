@@ -1,4 +1,5 @@
 import csv
+import DataHandler
 
 BASE_LOCATION = 'data/'
 
@@ -13,7 +14,7 @@ class DataSaver:
             writer = csv.DictWriter(csv_file, fieldnames=header_params)
             writer.writeheader()
 
-    def save_to_csv(self, data_to_save: dict, save_type: str) -> None:
+    def save_to_csv(self, data_to_save: list, save_type: str) -> None:
         with open(BASE_LOCATION + self.filename, save_type, newline='', encoding='utf-8') as csv_file:
-            writer = csv.DictWriter(csv_file, fieldnames=data_to_save.keys())
-            writer.writerow(data_to_save)
+            writer = csv.DictWriter(csv_file, fieldnames=DataHandler.PARAMS)
+            writer.writerows(data_to_save)

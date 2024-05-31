@@ -2,8 +2,7 @@ from DataHandler import DataHandler
 
 def main():
     data_handler = DataHandler()
-    data_handler.extract_data(114986)
-
+    data_handler.extract_data()
 
 if __name__ == "__main__":
     main()
