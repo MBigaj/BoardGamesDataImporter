@@ -1,1 +1,1 @@
-# Application for downloading data from [https://boardgamegeek.com/xmlapi](BoardGameGeek API) and generating a simple recommendation system
+# Application for downloading data from [BoardGameGeek API](https://boardgamegeek.com/xmlapi) and generating a simple recommendation system
